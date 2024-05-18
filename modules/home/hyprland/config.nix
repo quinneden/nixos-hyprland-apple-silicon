@@ -77,10 +77,10 @@
 
         blur = {
           enabled = true;
-          size = 1;
-          passes = 1;
-          # size = 4;
-          # passes = 2;
+          # size = 1;
+          # passes = 1;
+          size = 4;
+          passes = 2;
           brightness = 1;
           contrast = 1.400;
           ignore_opacity = true;
@@ -238,7 +238,7 @@
         "size 1200 725,mpv"
         "float,title:^(float_kitty)$"
         "center,title:^(float_kitty)$"
-        "size 950 600,title:^(float_kitty)$"
+        "size 1050 900,title:^(float_kitty)$"
         "float,audacious"
         "workspace 8 silent, audacious"
         "pin,wofi"
@@ -273,7 +273,7 @@
         "float,class:^(confirm)$"
         "float,class:^(dialog)$"
         "float,class:^(download)$"
-        "float,class:^(notification)$"
+        " # monitor=,preferred,auto,autofloat,class:^(notification)$"
         "float,class:^(error)$"
         "float,class:^(confirmreset)$"
         "float,title:^(Open File)$"
