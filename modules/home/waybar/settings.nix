@@ -21,7 +21,7 @@
         "memory"
         "disk"
         "pulseaudio" 
-        "battery"
+        # "battery"
         "network"
     ];
     clock= {

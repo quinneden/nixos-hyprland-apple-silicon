@@ -2,7 +2,7 @@
 
 init() {
     # Vars
-    CURRENT_USERNAME='frostphoenix'
+    CURRENT_USERNAME='quinn'
 
     # Colors
     NORMAL=$(tput sgr0)
@@ -114,7 +114,7 @@ install() {
 
     # Build the system (flakes + home manager)
     echo -e "\nBuilding the system...\n"
-    sudo nixos-rebuild switch --flake .#${HOST}
+    sudo nixos-rebuild switch --flake .#${HOST} --impure
 }
 
 main() {

@@ -9,7 +9,7 @@
       # nix-shell suport 
       arrterian.nix-env-selector
       # python
-      ms-python.python
+      # ms-python.python
       # C/C++
       ms-vscode.cpptools
       # OCaml
@@ -43,7 +43,7 @@
 
       "workbench.layoutControl.type" = "menu";
       "workbench.editor.limit.enabled" = true;
-      "workbench.editor.limit.value" = 10;
+      "workbench.editor.limit.value" = 8;
       "workbench.editor.limit.perEditorGroup" = true;
       "workbench.editor.showTabs" = "single";
       "files.autoSave" = "onWindowChange";
@@ -58,7 +58,7 @@
       "editor.scrollbar.horizontal" = "hidden";
       "workbench.layoutControl.enabled" = false;
 
-      "editor.mouseWheelZoom" = true;
+      # "editor.mouseWheelZoom" = true;
 
       "C_Cpp.autocompleteAddParentheses" = true;
       "C_Cpp.formatting" = "vcFormat";
@@ -88,7 +88,7 @@
     # Keybindings
     keybindings = [
       {
-        key = "ctrl+q";
+        key = "ctrl+/";
         command = "editor.action.commentLine";
         when = "editorTextFocus && !editorReadonly";
       }

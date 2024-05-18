@@ -137,9 +137,9 @@
         "$mainMod SHIFT, F, fullscreen, 1"
         "$mainMod, Space, togglefloating,"
         "$mainMod, D, exec, pkill wofi || wofi --show drun"
-        "$mainMod SHIFT, D, exec, hyprctl dispatch exec '[workspace 4 silent] discord'"
-        "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
-        "$mainMod, Escape, exec, swaylock"
+        # "$mainMod SHIFT, D, exec, hyprctl dispatch exec '[workspace 4 silent] discord'"
+        # "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
+  	      "$mainMod, Escape, exec, swaylock"
         "$mainMod SHIFT, Escape, exec, shutdown-script"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
@@ -148,11 +148,11 @@
         "$mainMod, C ,exec, hyprpicker -a"
         "$mainMod, G,exec, $HOME/.local/bin/toggle_layout"
         "$mainMod, W,exec, pkill wofi || wallpaper-picker"
-        "$mainMod SHIFT, W, exec, vm-start"
+        # "$mainMod SHIFT, W, exec, vm-start"
 
         # screenshot
-        "$mainMod, Print, exec, grimblast --notify --cursor save area ~/Pictures/$(date +'%Y-%m-%d-At-%Ih%Mm%Ss').png"
-        ",Print, exec, grimblast --notify --cursor  copy area"
+        # "$mainMod, Print, exec, grimblast --notify --cursor save area ~/Pictures/$(date +'%Y-%m-%d-At-%Ih%Mm%Ss').png"
+        # ",Print, exec, grimblast --notify --cursor  copy area"
 
         # switch focus
         "$mainMod, left, movefocus, l"
@@ -211,10 +211,10 @@
         "$mainMod, mouse_up, workspace, e+1"
 
         # laptop brigthness
-        ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-        ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-        "$mainMod, XF86MonBrightnessUp, exec, brightnessctl set 100%+"
-        "$mainMod, XF86MonBrightnessDown, exec, brightnessctl set 100%-"
+        # ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+        # ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        # "$mainMod, XF86MonBrightnessUp, exec, brightnessctl set 100%+"
+        # "$mainMod, XF86MonBrightnessDown, exec, brightnessctl set 100%-"
       ];
 
       # mouse binding

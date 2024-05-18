@@ -15,8 +15,8 @@
     };
   };
   nixpkgs = {
-    overlays = [
-      self.overlays.default
+    overlays = with inputs; [
+      nixos-apple-silicon.overlays.apple-silicon-overlay
       inputs.nur.overlay
     ];
   };
@@ -24,9 +24,10 @@
   environment.systemPackages = with pkgs; [
     wget
     git
+    ripgrep
   ];
 
-  time.timeZone = "Europe/Paris";
+  time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "23.05";

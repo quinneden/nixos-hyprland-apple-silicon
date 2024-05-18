@@ -7,26 +7,16 @@
     fd                                # find replacement
     file                              # Show file information 
     fzf                               # fuzzy finder
-    gtt                               # google translate TUI
-    gtrash                            # rm replacement, put deleted files in system trash
     hexdump
     jdk17                             # java
     lazygit
-    libreoffice
     cinnamon.nemo-with-extensions     # file manager
-    nitch                             # systhem fetch util
+    nitch                             # system fetch util
     nix-prefetch-github
-    prismlauncher                     # minecraft launcher
     ripgrep                           # grep replacement
-    soundwireserver                   # pass audio to android phone
     todo                              # cli todo list
-    toipe                             # typing test in the terminal
-    valgrind                          # c memory analyzer
     yazi                              # terminal file manager
-    youtube-dl
     gnome.zenity
-    winetricks
-    wineWowPackages.wayland
 
     # C / C++
     gcc
@@ -41,7 +31,7 @@
     ffmpeg
     imv                               # image viewer
     libnotify
-	  man-pages					            	  # extra man pages
+	man-pages					      # extra man pages
     mpv                               # video player
     ncdu                              # disk space
     openssl

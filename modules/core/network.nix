@@ -1,8 +1,11 @@
 { pkgs, ... }: 
 {
   networking = {
-    hostName = "nixos";
-    networkmanager.enable = true;
+    hostName = "lazarus";
+    wireless.iwd = {
+    	enable = true;
+    	settings.General.EnableNetworkConfiguration = true;
+    };
     nameservers = [ "1.1.1.1" ];
     firewall = {
       enable = true;

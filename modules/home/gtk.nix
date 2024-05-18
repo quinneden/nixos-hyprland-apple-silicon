@@ -12,7 +12,7 @@
     enable = true;
     font = {
       name = "JetBrainsMono Nerd Font";
-      size = 11;
+      size = 12;
     };
     iconTheme = {
       name = "Papirus-Dark";

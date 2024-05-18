@@ -16,7 +16,7 @@
       window_padding_width = 10;
       scrollback_lines = 10000;
       enable_audio_bell = false;
-      mouse_hide_wait = 60;
+      mouse_hide_wait = 15;
       
       ## Tabs
       tab_title_template = "{index}";
