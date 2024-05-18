@@ -18,6 +18,11 @@
     yazi                              # terminal file manager
     gnome.zenity
 
+    # Asahi
+    asahi-btsync
+    asahi-bless
+    asahi-nvram
+
     # C / C++
     gcc
     gnumake

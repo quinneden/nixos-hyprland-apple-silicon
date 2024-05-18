@@ -24,7 +24,6 @@
   environment.systemPackages = with pkgs; [
     wget
     git
-    ripgrep
   ];
 
   time.timeZone = "America/Los_Angeles";

@@ -22,6 +22,7 @@
       # tt = "gtrash put";
       # cat = "bat";
       nano = "micro";
+      mi = "micro";
       code = "codium";
       py = "python";
       icat = "kitten icat";
@@ -33,13 +34,13 @@
       tree = "eza --icons --tree --group-directories-first";
 
       # Nixos
-      cdnix = "cd ~/.config/nixos-config && codium ~/nixos-config";
-      codenix = "cd ~/.config/nixos-config && codium ~/nixos-config";
+      cdnix = "cd ~/.config/lazarus";
+      codenix = "cd ~/.config/lazarus && codium ~/.config/lazarus";
       ns = "nix-shell --run zsh";
       nix-shell = "nix-shell --run zsh";
-      nix-switch = "sudo nixos-rebuild switch --flake ~/nixos-config#${host}";
-      nix-switchu = "sudo nixos-rebuild switch --upgrade --flake ~/nixos-config#${host}";
-      flake-update = "sudo nix flake update ~/nixos-config#";
+      nix-switch = "sudo nixos-rebuild switch --flake ~/.config/lazarus#${host} --impure";
+      nix-switchu = "sudo nixos-rebuild switch --upgrade --flake ~/.config/lazarus#${host} --impure";
+      flake-update = "sudo nix flake update ~/.config/lazarus#";
       nix-clean = "sudo nix-collect-garbage && sudo nix-collect-garbage -d && sudo rm /nix/var/nix/gcroots/auto/* && nix-collect-garbage && nix-collect-garbage -d";
 
       # Git
@@ -61,6 +62,7 @@
       gchb = "git checkout -b";
       gcoe = "git config user.email";
       gcon = "git config user.name";
+      commit = "git commit -a --allow-empty-message --no-edit";
 
       # python
       piv = "python -m venv .venv";

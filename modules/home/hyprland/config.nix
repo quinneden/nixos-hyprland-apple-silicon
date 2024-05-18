@@ -2,6 +2,7 @@
 {
   wayland.windowManager.hyprland = {
     settings = {
+
       
       # autostart
       exec-once = [
@@ -11,12 +12,14 @@
         "nm-applet &"
         "wl-clip-persist --clipboard both"
         "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
-        "sleep 1 && swaylock"
+        # "sleep 1 && swaylock"
         "hyprctl setcursor Nordzy-cursors 22 &"
         "poweralertd &"
         "waybar &"
         "mako &"
       ];
+      
+      monitor = "HDMI-A-1,2560x1440@144,0x0,1";
 
       input = {
         kb_layout = "us";
@@ -131,7 +134,8 @@
         "$mainMod, Return, exec, kitty"
         "ALT, Return, exec, kitty --title float_kitty"
         "$mainMod SHIFT, Return, exec, kitty --start-as=fullscreen -o 'font_size=16'"
-        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"
+        # "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"
+        "$mainMod, B, exec, floorp"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, fullscreen, 1"
@@ -139,7 +143,7 @@
         "$mainMod, D, exec, pkill wofi || wofi --show drun"
         # "$mainMod SHIFT, D, exec, hyprctl dispatch exec '[workspace 4 silent] discord'"
         # "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
-  	      "$mainMod, Escape, exec, swaylock"
+  	    "$mainMod, Escape, exit"
         "$mainMod SHIFT, Escape, exec, shutdown-script"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
@@ -281,7 +285,7 @@
     };
 
     extraConfig = "
-      monitor=,preferred,auto,auto
+      # monitor=,preferred,auto,auto
 
       xwayland {
         force_zero_scaling = true

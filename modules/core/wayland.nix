@@ -10,7 +10,6 @@
     wlr.enable = true;
     xdgOpenUsePortal = true;
     extraPortals = [
-      # pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
   };
@@ -19,7 +18,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r --cmd ${pkgs.hyprland}/bin/Hyprland";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r --cmd Hyprland";
         user = "greeter";
       };
     };

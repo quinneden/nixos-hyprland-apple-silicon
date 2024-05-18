@@ -21,6 +21,8 @@
   vm-start = pkgs.writeScriptBin "vm-start" (builtins.readFile ./scripts/vm-start.sh);
 
   ascii = pkgs.writeScriptBin "ascii" (builtins.readFile ./scripts/ascii.sh);
+
+  cfg = pkgs.writeScriptBin "cfg" (builtins.readFile ./scripts/cfg.sh);
 in {
   home.packages = with pkgs; [
     wall-change
@@ -45,5 +47,7 @@ in {
     vm-start
 
     ascii
+
+    cfg
   ];
 }

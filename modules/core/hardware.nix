@@ -4,6 +4,8 @@
   	nixos-apple-silicon.nixosModules.apple-silicon-support
   ];
 
+  hardware.bluetooth.enable = true;
+
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
   # hardware.enableRedistributableFirmware = true;

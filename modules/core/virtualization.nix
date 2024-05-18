@@ -12,7 +12,7 @@
     win-virtio
     win-spice
     gnome.adwaita-icon-theme
-	podman
+	  podman
   ];
 
   # Manage the virtualisation services

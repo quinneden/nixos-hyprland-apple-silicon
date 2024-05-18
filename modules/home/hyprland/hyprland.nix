@@ -11,14 +11,13 @@
     wf-recorder
     glib
     wayland
+    wayland-utils
     direnv
   ];
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
-    xwayland = {
-      enable = true;
-    };
+    xwayland.enable = true;
     systemd.enable = true;
   };
 }
