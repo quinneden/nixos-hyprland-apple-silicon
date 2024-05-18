@@ -28,8 +28,11 @@
       icat = "kitten icat";
       dsize = "du -hs";
       findw = "grep -rl";
+      surf = "sudo rm -rf";
+      rf = "rm -rf";
 
-      l = "eza --icons  -a --group-directories-first -1"; #EZA_ICON_SPACING=2
+      l = "eza --icons  -a --group-directories-first"; #EZA_ICON_SPACING=2
+      la = "eza -a1";
       ll = "eza --icons  -a --group-directories-first -1 --no-user --long";
       tree = "eza --icons --tree --group-directories-first";
 

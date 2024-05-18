@@ -5,5 +5,7 @@
     ./../../modules/core
   ];
 
-  powerManagement.cpuFreqGovernor = "performance";
+  # powerManagement.cpuFreqGovernor = "performance";
+  zramSwap.enable = true;
+  
 }

@@ -5,6 +5,7 @@
     eza                               # ls replacement
     entr                              # perform action when file change
     fd                                # find replacement
+    gh
     file                              # Show file information 
     fzf                               # fuzzy finder
     hexdump
@@ -36,7 +37,7 @@
     ffmpeg
     imv                               # image viewer
     libnotify
-	man-pages					      # extra man pages
+	  man-pages					      # extra man pages
     mpv                               # video player
     ncdu                              # disk space
     openssl
