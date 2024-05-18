@@ -5,7 +5,6 @@
     eza                               # ls replacement
     entr                              # perform action when file change
     fd                                # find replacement
-    gh
     file                              # Show file information 
     fzf                               # fuzzy finder
     hexdump
