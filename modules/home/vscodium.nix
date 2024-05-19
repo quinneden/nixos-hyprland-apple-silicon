@@ -6,12 +6,13 @@
     extensions = with pkgs.vscode-extensions; [
       # nix language
       bbenoist.nix
+
       # nix-shell suport 
       arrterian.nix-env-selector
-      # python
-      # ms-python.python
+
       # C/C++
       ms-vscode.cpptools
+
       # OCaml
       ocamllabs.ocaml-platform
 
@@ -50,7 +51,7 @@
       "explorer.openEditors.visible" = 0;
       "breadcrumbs.enabled" = false;
       "editor.renderControlCharacters" = false;
-      "workbench.activityBar.location" = "hidden";
+      "workbench.activityBar.location" = "bottom";
       "workbench.statusBar.visible" = false;
       "editor.scrollbar.verticalScrollbarSize" = 2;
       "editor.scrollbar.horizontalScrollbarSize" = 2;
@@ -58,7 +59,7 @@
       "editor.scrollbar.horizontal" = "hidden";
       "workbench.layoutControl.enabled" = false;
 
-      # "editor.mouseWheelZoom" = true;
+      "editor.mouseWheelZoom" = true;
 
       "C_Cpp.autocompleteAddParentheses" = true;
       "C_Cpp.formatting" = "vcFormat";

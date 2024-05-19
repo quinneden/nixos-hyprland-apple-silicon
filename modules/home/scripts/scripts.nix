@@ -24,7 +24,7 @@
 
   cfg = pkgs.writeScriptBin "cfg" (builtins.readFile ./scripts/cfg.sh);
 
-  bless = pkgs.writeScriptBin "cfg" (builtins.readFile ./scripts/bless.sh);
+  bless = pkgs.writeScriptBin "bless" (builtins.readFile ./scripts/bless.sh);
 in {
   home.packages = with pkgs; [
     wall-change
