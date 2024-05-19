@@ -23,6 +23,8 @@
   ascii = pkgs.writeScriptBin "ascii" (builtins.readFile ./scripts/ascii.sh);
 
   cfg = pkgs.writeScriptBin "cfg" (builtins.readFile ./scripts/cfg.sh);
+
+  bless = pkgs.writeScriptBin "cfg" (builtins.readFile ./scripts/bless.sh);
 in {
   home.packages = with pkgs; [
     wall-change
@@ -49,5 +51,6 @@ in {
     ascii
 
     cfg
+    bless
   ];
 }

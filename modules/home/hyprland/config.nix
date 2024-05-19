@@ -84,7 +84,7 @@
           brightness = 1;
           contrast = 1.400;
           ignore_opacity = true;
-          noise = 0;
+          noise = 0.03;
           new_optimizations = true;
           xray = true;
         };
@@ -131,28 +131,29 @@
         "$mainMod, F1, exec, show-keybinds"
 
         # keybindings
-        "$mainMod, Return, exec, kitty"
+        "$mainMod, Return, exec, kitty --title float_kitty_full"
         "ALT, Return, exec, kitty --title float_kitty"
-        "$mainMod SHIFT, Return, exec, kitty --start-as=fullscreen -o 'font_size=16'"
-        # "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"
-        "$mainMod, B, exec, floorp"
+        "$mainMod SHIFT, Return, exec, kitty --start-as=fullscreen"
+        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"
+        # "$mainMod, B, exec, floorp"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, fullscreen, 1"
         "$mainMod, Space, togglefloating,"
         "$mainMod, D, exec, pkill wofi || wofi --show drun"
         # "$mainMod SHIFT, D, exec, hyprctl dispatch exec '[workspace 4 silent] discord'"
-        # "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
+        "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
   	    "$mainMod, Escape, exit"
         "$mainMod SHIFT, Escape, exec, shutdown-script"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
         "$mainMod, E, exec, nemo"
         "$mainMod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped"
-        "$mainMod, C ,exec, hyprpicker -a"
+        # "$mainMod, C ,exec, hyprpicker -a"
+        "$mainMod, C ,exec, codium"
         "$mainMod, G,exec, $HOME/.local/bin/toggle_layout"
         "$mainMod, W,exec, pkill wofi || wallpaper-picker"
-        # "$mainMod SHIFT, W, exec, vm-start"
+        "$mainMod SHIFT, W, exec, vm-start"
 
         # screenshot
         # "$mainMod, Print, exec, grimblast --notify --cursor save area ~/Pictures/$(date +'%Y-%m-%d-At-%Ih%Mm%Ss').png"
@@ -238,7 +239,10 @@
         "size 1200 725,mpv"
         "float,title:^(float_kitty)$"
         "center,title:^(float_kitty)$"
-        "size 1050 900,title:^(float_kitty)$"
+        "size 850 850,title:^(float_kitty)$"
+        "float,title:^(float_kitty_full)$"
+        "center,title:^(float_kitty_full)$"
+        "size 1750 1200,title:^(float_kitty_full)$"
         "float,audacious"
         "workspace 8 silent, audacious"
         "pin,wofi"
@@ -273,7 +277,7 @@
         "float,class:^(confirm)$"
         "float,class:^(dialog)$"
         "float,class:^(download)$"
-        " # monitor=,preferred,auto,autofloat,class:^(notification)$"
+        "float,class:^(notification)$"
         "float,class:^(error)$"
         "float,class:^(confirmreset)$"
         "float,title:^(Open File)$"
