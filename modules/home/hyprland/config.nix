@@ -17,6 +17,7 @@
         "poweralertd &"
         "waybar &"
         "mako &"
+        "[workspace special; size 75% 20%;move 12.5% 40] kitty"
       ];
       
       monitor = "HDMI-A-1,2560x1440@144,0x0,1";
@@ -84,7 +85,7 @@
           brightness = 1;
           contrast = 1.400;
           ignore_opacity = true;
-          noise = 0.03;
+          noise = 0.04;
           new_optimizations = true;
           xray = true;
         };
@@ -131,11 +132,11 @@
         "$mainMod, F1, exec, show-keybinds"
 
         # keybindings
-        "$mainMod, Return, exec, kitty --title float_kitty_full"
+        "$mainMod, Return, exec, kitty"
         "ALT, Return, exec, kitty --title float_kitty"
-        "$mainMod SHIFT, Return, exec, kitty --start-as=fullscreen"
+        "$mainMod SHIFT, Return, exec, kitty --title float_kitty_full"
+        "$mainMod SHIFT, W, togglespecialworkspace,"
         "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"
-        # "$mainMod, B, exec, floorp"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, fullscreen, 1"
@@ -153,7 +154,6 @@
         "$mainMod, C ,exec, codium"
         "$mainMod, G,exec, $HOME/.local/bin/toggle_layout"
         "$mainMod, W,exec, pkill wofi || wallpaper-picker"
-        "$mainMod SHIFT, W, exec, vm-start"
 
         # screenshot
         # "$mainMod, Print, exec, grimblast --notify --cursor save area ~/Pictures/$(date +'%Y-%m-%d-At-%Ih%Mm%Ss').png"
@@ -239,7 +239,8 @@
         "size 1200 725,mpv"
         "float,title:^(float_kitty)$"
         "center,title:^(float_kitty)$"
-        "size 850 850,title:^(float_kitty)$"
+        "size 850 750,title:^(float_kitty)$"
+        "move 100%-w-20,title:^(float_kitty)$"
         "float,title:^(float_kitty_full)$"
         "center,title:^(float_kitty_full)$"
         "size 1750 1200,title:^(float_kitty_full)$"
@@ -268,6 +269,7 @@
         "opacity 1.0 override 1.0 override, title:^(.*mpv.*)$"
         "opacity 1.0 override 1.0 override, class:(Aseprite)"
         "opacity 1.0 override 1.0 override, class:(Unity)"
+        # "opacity 0.6 override 0.7 override, class:(VSCodium)"
         "idleinhibit focus, class:^(mpv)$"
         "idleinhibit fullscreen, class:^(firefox)$"
         "float,class:^(pavucontrol)$"

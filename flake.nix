@@ -29,7 +29,7 @@
     hypr-contrib.url = "github:hyprwm/contrib";
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
-	nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+  	nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   

@@ -26,5 +26,6 @@
     GTK_THEME = "Catppuccin-Mocha-Compact-Lavender-Dark";
     EDITOR = "micro";
     NIXPKGS_ALLOW_UNFREE = "1";
+    FLAKE_DIR="/home/quinn/.config/lazarus";
   };
 }
