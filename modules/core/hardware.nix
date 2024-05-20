@@ -18,4 +18,6 @@
   	experimentalGPUInstallMode = "replace";
   	withRust = true;
   };
+
+  zramSwap.enable = true;
 }
