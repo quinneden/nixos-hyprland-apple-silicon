@@ -1,42 +1,29 @@
-{ lib, inputs, ... }: 
+{ lib, inputs, pkgs, config, ... }: 
+
 {
   programs.starship = {
-    enable = false;
-
+    enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
     enableNushellIntegration = true;
 
     settings = {
-      # right_format = "$cmd_duration";
-      
-      directory = {
-        format = "[ ](bold #89b4fa)[ $path ]($style)";
-        style = "bold #b4befe";
+      directory.substitutions = {
+        "~" = "homedir";
+        "lazarus" = " Lazarus";
       };
-
-      character = {
-        success_symbol = "[ ](bold #89b4fa)[ ❯](bold green)";
-        error_symbol = "[ ](bold #89b4fa)[ ❯](bold red)";
-        # success_symbol = "[ ](bold #89b4fa)[ ➜](bold green)";
-        # error_symbol = "[ ](bold #89b4fa)[ ➜](bold red)";
-        # error_symbol = "[ ](bold #89dceb)[ ✗](bold red)";
-      };
-
       cmd_duration = {
-        format = "[]($style)[[󰔚 ](bg:#161821 fg:#d4c097 bold)$duration](bg:#161821 fg:#BBC3DF)[ ]($style)";
         disabled = true;
-        style = "bg:none fg:#161821";
-    };        
-
-      # directory.substitutions = {
-        # "~" = "󰋞";
-        # "Documents" = " ";
-        # "Downloads" = " ";
-        # "Music" = " ";
-        # "Pictures" = " ";
-      # };
-
+      };
+      git_branch = {
+        symbol = " ";
+      };
+      nix_shell = {
+        symbol = " ";
+      };
+      git_state = {
+        style = "red";
+      };
       palette = "catppuccin_mocha";
     } // builtins.fromTOML (builtins.readFile "${inputs.catppuccin-starship}/palettes/mocha.toml");
   };

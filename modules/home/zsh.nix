@@ -12,15 +12,11 @@
     initExtraFirst = ''
       DISABLE_MAGIC_FUNCTIONS=true
       export "MICRO_TRUECOLOR=1"
+      EZA_ICON_SPACING=2
     '';
     shellAliases = {
-      # record = "wf-recorder --audio=alsa_output.pci-0000_08_00.6.analog-stereo.monitor -f $HOME/Videos/$(date +'%Y%m%d%H%M%S_1.mp4')";
-
-      # Utils
       c = "clear";
       cd = "z";
-      # tt = "gtrash put";
-      # cat = "bat";
       nano = "micro";
       mi = "micro";
       code = "codium";
@@ -30,14 +26,14 @@
       findw = "grep -rl";
       surf = "sudo rm -rf";
       rf = "rm -rf";
-
       l = "eza --icons  -a --group-directories-first"; #EZA_ICON_SPACING=2
-      la = "eza -a1";
-      ll = "eza --icons  -a --group-directories-first -1 --no-user --long";
+      la = "eza -a1 --";
+      ll = "eza --icons  -a --group-directories-first --long --git";
       tree = "eza --icons --tree --group-directories-first";
 
       # Nixos
-      cdnix = "cd ~/.config/lazarus";
+      cdnix = "cd $FLAKE_DIR";
+      "cd nix" = "cd $FLAKE_DIR"
       codenix = "cd ~/.config/lazarus && codium ~/.config/lazarus";
       ns = "nix-shell --run zsh";
       nix-shell = "nix-shell --run zsh";
@@ -72,44 +68,16 @@
       psv = "source .venv/bin/activate";
     };
 
-    initExtra = ''
-      PROMPT='%{$fg_bold[blue]%}$(get_pwd)%{$reset_color%} ''${prompt_suffix}'
-      local prompt_suffix="%(?:%{$fg_bold[green]%}❯ :%{$fg_bold[red]%}❯%{$reset_color%} "
-      RPROMPT=
-
-      function get_pwd(){
-          git_root=$PWD
-          while [[ $git_root != / && ! -e $git_root/.git ]]; do
-              git_root=$git_root:h
-          done
-          if [[ $git_root = / ]]; then
-              unset git_root
-              prompt_short_dir=%~
-          else
-              parent=''${git_root%\/*}
-              prompt_short_dir=''${PWD#$parent/}
-          fi
-          echo $prompt_short_dir
-      }
-
-      vterm_printf(){
-          if [ -n "$TMUX" ]; then
-              # Tell tmux to pass the escape sequences through
-              # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
-              printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-          elif [ "''${TERM%%-*}" = "screen" ]; then
-              # GNU screen (screen, screen-256color, screen-256color-bce)
-              printf "\eP\e]%s\007\e\\" "$1"
-          else
-              printf "\e]%s\e\\" "$1"
-          fi
-      }
-    '';
+    # plugins = [
+    # {
+    #   name = "";
+    #   file = "share/zsh/$[PLUGIN]/$[PLUGIN].zsh";
+    #   src = pkgs.$[PLUGIN];
+    # }];
   };
 
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
   };
-
 }
