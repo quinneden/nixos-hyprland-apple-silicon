@@ -26,14 +26,15 @@
       findw = "grep -rl";
       surf = "sudo rm -rf";
       rf = "rm -rf";
-      l = "eza --icons  -a --group-directories-first"; #EZA_ICON_SPACING=2
+      l = "eza --icons  -a --group-directories-first";
       la = "eza -a1 --";
       ll = "eza --icons  -a --group-directories-first --long --git";
       tree = "eza --icons --tree --group-directories-first";
 
       # Nixos
       cdnix = "cd $FLAKE_DIR";
-      "cd nix" = "cd $FLAKE_DIR"
+      "cd nix" = "cd $FLAKE_DIR";
+      scripts = "~/.config/lazarus/modules/home/scripts/scripts";
       codenix = "cd ~/.config/lazarus && codium ~/.config/lazarus";
       ns = "nix-shell --run zsh";
       nix-shell = "nix-shell --run zsh";

@@ -8,6 +8,8 @@
     fd                                # find replacement
     file                              # Show file information 
     fzf                               # fuzzy finder
+    jq
+    hdrop
     hexdump
     jdk17                             # java
     lazygit

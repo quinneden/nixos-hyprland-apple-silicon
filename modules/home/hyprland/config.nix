@@ -2,7 +2,6 @@
 {
   wayland.windowManager.hyprland = {
     settings = {
-
       
       # autostart
       exec-once = [
@@ -12,12 +11,10 @@
         "nm-applet &"
         "wl-clip-persist --clipboard both"
         "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
-        # "sleep 1 && swaylock"
         "hyprctl setcursor Nordzy-cursors 22 &"
         "poweralertd &"
         "waybar &"
         "mako &"
-        "[workspace special; size 75% 20%;move 12.5% 40] kitty"
       ];
       
       monitor = "HDMI-A-1,2560x1440@144,0x0,1";
@@ -78,8 +75,6 @@
 
         blur = {
           enabled = true;
-          # size = 1;
-          # passes = 1;
           size = 4;
           passes = 2;
           brightness = 1;
@@ -132,28 +127,25 @@
         "$mainMod, F1, exec, show-keybinds"
 
         # keybindings
-        "$mainMod, Return, exec, kitty"
+        "$mainMod, Return, exec, hyprctl dispatch exec '[workspace 2] kitty'"
         "ALT, Return, exec, kitty --title float_kitty"
         "$mainMod SHIFT, Return, exec, kitty --title float_kitty_full"
-        "$mainMod SHIFT, W, togglespecialworkspace,"
-        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"
+        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1] floorp'"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, fullscreen, 1"
         "$mainMod, Space, togglefloating,"
         "$mainMod, D, exec, pkill wofi || wofi --show drun"
-        # "$mainMod SHIFT, D, exec, hyprctl dispatch exec '[workspace 4 silent] discord'"
-        "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
+        # "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
   	    "$mainMod, Escape, exit"
         "$mainMod SHIFT, Escape, exec, shutdown-script"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
         "$mainMod, E, exec, nemo"
         "$mainMod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped"
-        # "$mainMod, C ,exec, hyprpicker -a"
-        "$mainMod, C ,exec, codium"
-        "$mainMod, G,exec, $HOME/.local/bin/toggle_layout"
-        "$mainMod, W,exec, pkill wofi || wallpaper-picker"
+        "$mainMod, C, exec, codium"
+        "$mainMod, G, exec, $HOME/.local/bin/toggle_layout"
+        "$mainMod, W, exec, pkill wofi || wallpaper-picker"
 
         # screenshot
         # "$mainMod, Print, exec, grimblast --notify --cursor save area ~/Pictures/$(date +'%Y-%m-%d-At-%Ih%Mm%Ss').png"
