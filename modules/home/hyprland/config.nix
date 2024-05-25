@@ -70,7 +70,7 @@
       decoration = {
         rounding = 0;
         # active_opacity = 0.90;
-        # inactive_opacity = 0.90;
+        inactive_opacity = 0.90;
         # fullscreen_opacity = 1.0;
 
         blur = {
@@ -143,7 +143,7 @@
         "$mainMod, J, togglesplit,"
         "$mainMod, E, exec, nemo"
         "$mainMod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped"
-        "$mainMod, C, exec, codium"
+        "$mainMod, C, exec, hyprctl dispatch exec '[workspace 3] codium'"
         "$mainMod, G, exec, $HOME/.local/bin/toggle_layout"
         "$mainMod, W, exec, pkill wofi || wallpaper-picker"
 
@@ -237,7 +237,6 @@
         "center,title:^(float_kitty_full)$"
         "size 1750 1200,title:^(float_kitty_full)$"
         "float,audacious"
-        "workspace 8 silent, audacious"
         "pin,wofi"
         "float,wofi"
         "noborder,wofi"
@@ -259,9 +258,6 @@
         "pin, title:^(Picture-in-Picture)$"
         "opacity 1.0 override 1.0 override, title:^(.*imv.*)$"
         "opacity 1.0 override 1.0 override, title:^(.*mpv.*)$"
-        "opacity 1.0 override 1.0 override, class:(Aseprite)"
-        "opacity 1.0 override 1.0 override, class:(Unity)"
-        # "opacity 0.6 override 0.7 override, class:(VSCodium)"
         "idleinhibit focus, class:^(mpv)$"
         "idleinhibit fullscreen, class:^(firefox)$"
         "float,class:^(pavucontrol)$"
@@ -283,8 +279,6 @@
     };
 
     extraConfig = "
-      # monitor=,preferred,auto,auto
-
       xwayland {
         force_zero_scaling = true
       }

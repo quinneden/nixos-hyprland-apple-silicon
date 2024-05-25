@@ -31,7 +31,6 @@
 
     bleachbit                         # cache cleaner
     cmatrix
-    gparted                           # partition manager
     ffmpeg
     imv                               # image viewer
     libnotify

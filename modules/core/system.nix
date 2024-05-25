@@ -22,12 +22,13 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wget
-    git
     asahi-bless
     asahi-btsync
     asahi-nvram
     btrfs-progs
+    git
+    gparted
+    wget
   ];
 
   time.timeZone = "America/Los_Angeles";
