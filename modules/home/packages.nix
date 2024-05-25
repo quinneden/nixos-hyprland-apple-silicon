@@ -9,6 +9,7 @@
     file                              # Show file information 
     fzf                               # fuzzy finder
     jq
+    just
     hdrop
     hexdump
     jdk17                             # java
@@ -20,11 +21,6 @@
     todo                              # cli todo list
     yazi                              # terminal file manager
     gnome.zenity
-
-    # Asahi
-    asahi-btsync
-    asahi-bless
-    asahi-nvram
 
     # C / C++
     gcc

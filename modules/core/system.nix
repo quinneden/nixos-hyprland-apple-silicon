@@ -24,6 +24,10 @@
   environment.systemPackages = with pkgs; [
     wget
     git
+    asahi-bless
+    asahi-btsync
+    asahi-nvram
+    btrfs-progs
   ];
 
   time.timeZone = "America/Los_Angeles";

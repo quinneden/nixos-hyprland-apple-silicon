@@ -25,6 +25,7 @@
   cfg = pkgs.writeScriptBin "cfg" (builtins.readFile ./scripts/cfg.sh);
   bless = pkgs.writeScriptBin "bless" (builtins.readFile ./scripts/bless.sh);
   colortable = pkgs.writeScriptBin "colortable" (builtins.readFile ./scripts/colortable.sh);
+  clone = pkgs.writeScriptBin "clone" (builtins.readFile ./scripts/clone.sh);
 in {
   home.packages = with pkgs; [
     wall-change
@@ -49,9 +50,11 @@ in {
     vm-start
 
     ascii
-
+    
+    # Personal
     cfg
     bless
     colortable
+    clone
   ];
 }

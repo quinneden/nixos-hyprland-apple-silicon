@@ -44,7 +44,7 @@
 
       "workbench.layoutControl.type" = "menu";
       "workbench.editor.limit.enabled" = true;
-      "workbench.editor.limit.value" = 8;
+      "workbench.editor.limit.value" = 5;
       "workbench.editor.limit.perEditorGroup" = true;
       "workbench.editor.showTabs" = "single";
       "files.autoSave" = "onWindowChange";
@@ -52,12 +52,12 @@
       "breadcrumbs.enabled" = false;
       "editor.renderControlCharacters" = false;
       "workbench.activityBar.location" = "bottom";
-      "workbench.statusBar.visible" = false;
+      "workbench.statusBar.visible" = true;
       "editor.scrollbar.verticalScrollbarSize" = 2;
       "editor.scrollbar.horizontalScrollbarSize" = 2;
       "editor.scrollbar.vertical" = "hidden";
       "editor.scrollbar.horizontal" = "hidden";
-      "workbench.layoutControl.enabled" = false;
+      "workbench.layoutControl.enabled" = true;
 
       "editor.mouseWheelZoom" = true;
 
@@ -96,6 +96,15 @@
       {
         key = "ctrl+s";
         command = "workbench.action.files.saveFiles";
+      }
+      {
+        key = "meta+shift+w";
+        command = "workbench.action.terminal.new";
+        when = "terminalProcessSupported || terminalWebExtensionContributedProfile";
+      }
+      {
+        key = "ctrl+w";
+        command = "";
       }
     ];
   };
