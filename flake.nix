@@ -8,10 +8,12 @@
       url = "github:catppuccin/bat";
       flake = false;
     };
+    
     catppuccin-cava = {
       url = "github:catppuccin/cava";
       flake = false;
     };
+    
     catppuccin-starship = {
       url = "github:catppuccin/starship";
       flake = false;
@@ -26,19 +28,26 @@
       url =  "git+https://github.com/hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hypr-contrib.url = "github:hyprwm/contrib";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
+    
+    hypr-contrib = {
+      url = "github:hyprwm/contrib";
+    };
+    
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+    };
 
-  	nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+  	nixos-apple-silicon = {
+  	  url = "github:tpwrules/nixos-apple-silicon";
+  	};
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
   
-    nix-gaming.url = "github:fufexan/nix-gaming";
-  
-    nur.url = "github:nix-community/NUR";
-  
-  
-
+    nur = {
+      url = "github:nix-community/NUR";
+    };
   };
 
   outputs = { nixpkgs, self, ...} @ inputs:

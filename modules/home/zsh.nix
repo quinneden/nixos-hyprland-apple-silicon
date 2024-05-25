@@ -42,7 +42,7 @@
       # nix-shell = "nix-shell --run zsh";
       nix-switch = "sudo nixos-rebuild switch --flake ~/.config/lazarus#${host} --impure";
       nix-switchu = "sudo nixos-rebuild switch --upgrade --flake ~/.config/lazarus#${host} --impure";
-      flake-update = "sudo nix flake update ~/.config/lazarus#${host}";
+      flake-update = "sudo nix flake update ~/.config/lazarus";
       nix-clean = "sudo nix-collect-garbage && sudo nix-collect-garbage -d && sudo rm /nix/var/nix/gcroots/auto/* && nix-collect-garbage && nix-collect-garbage -d";
 
       # Git
