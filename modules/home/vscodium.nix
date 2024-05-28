@@ -98,6 +98,10 @@
         command = "workbench.action.files.saveFiles";
       }
       {
+        key = "meta+s";
+        command = "workbench.action.files.saveFiles";
+      }
+      {
         key = "meta+shift+w";
         command = "workbench.action.terminal.new";
         when = "terminalProcessSupported || terminalWebExtensionContributedProfile";
@@ -105,6 +109,19 @@
       {
         key = "ctrl+w";
         command = "";
+      }
+      {
+        key = "ctrl+d";
+        command = "editor.action.duplicateSelection";
+      }
+      {
+        key = "meta+shift+e";
+        command = "workbench.view.explorer";
+        when = "viewContainer.workbench.view.explorer.enabled";
+      }
+      {
+        command = "editor.action.duplicateSelection";
+        key = "ctrl+d";
       }
     ];
   };

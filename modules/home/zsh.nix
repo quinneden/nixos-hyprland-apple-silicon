@@ -38,9 +38,9 @@
       "cd nix" = "cd $FLAKE_DIR";
       scripts = "~/.config/lazarus/modules/home/scripts/scripts";
       codenix = "cd ~/.config/lazarus && codium ~/.config/lazarus";
-      # ns = "nix-shell --run zsh";
-      # nix-shell = "nix-shell --run zsh";
       nix-switch = "sudo nixos-rebuild switch --flake ~/.config/lazarus#${host} --impure";
+      switch = "sudo nixos-rebuild switch --flake ~/.config/lazarus#${host} --impure";
+      switchup = "sudo nixos-rebuild switch --flake ~/.config/lazarus#${host} --impure";
       nix-switchu = "sudo nixos-rebuild switch --upgrade --flake ~/.config/lazarus#${host} --impure";
       flake-update = "sudo nix flake update ~/.config/lazarus";
       nix-clean = "sudo nix-collect-garbage && sudo nix-collect-garbage -d && sudo rm /nix/var/nix/gcroots/auto/* && nix-collect-garbage && nix-collect-garbage -d";

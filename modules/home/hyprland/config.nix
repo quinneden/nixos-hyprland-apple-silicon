@@ -21,11 +21,19 @@
 
       input = {
         kb_layout = "us";
+        repeat_delay = 250;
+        repeat_rate = 40;
         numlock_by_default = true;
         follow_mouse = 1;
-        sensitivity = 0;
+        mouse_refocus = false;
+        sensitivity = 0.1;
+        workspace_swipe = true;
+        workspace_swipe_fingers = 3;
         touchpad = {
           natural_scroll = true;
+          clickfinger_behavior = true;
+          scroll_factor = 0.85;
+          disable_while_typing = false;
         };
       };
 
@@ -42,7 +50,7 @@
       };
 
       misc = {
-        disable_autoreload = true;
+        disable_autoreload = false;
         disable_hyprland_logo = true;
         always_follow_on_dnd = true;
         layers_hog_keyboard_focus = true;
@@ -68,9 +76,9 @@
       };
 
       decoration = {
-        rounding = 0;
+        rounding = 8;
         # active_opacity = 0.90;
-        inactive_opacity = 0.90;
+        # inactive_opacity = 0.90;
         # fullscreen_opacity = 1.0;
 
         blur = {
@@ -113,12 +121,13 @@
           # Fade
           "fadeIn, 1, 3, easeOutCubic" # fade in (open) -> layers and windows
           "fadeOut, 1, 2, easeOutCubic" # fade out (close) -> layers and windows
-          "fadeSwitch, 0, 1, easeOutCirc" # fade on changing activewindow and its opacity
+          "fadeSwitch, 1, 1, easeOutCirc" # fade on changing activewindow and its opacity
           "fadeShadow, 1, 10, easeOutCirc" # fade on changing activewindow for shadows
           "fadeDim, 1, 4, fluent_decel" # the easing of the dimming of inactive windows
           "border, 1, 2.7, easeOutCirc" # for animating the border's color switch speed
           "borderangle, 1, 30, fluent_decel, once" # for animating the border's gradient angle - styles: once (default), loop
           "workspaces, 1, 4, easeOutCubic, fade" # styles: slide, slidevert, fade, slidefade, slidefadevert
+          "specialWorkspace, 1, 8, easeOutCubic, slidefade" 
         ];
       };
 
@@ -127,9 +136,11 @@
         "$mainMod, F1, exec, show-keybinds"
 
         # keybindings
-        "$mainMod, Return, exec, hyprctl dispatch exec '[workspace 2] kitty'"
+        "$mainMod, Return, exec, kitty --title kitty_fullscreen"
         "ALT, Return, exec, kitty --title float_kitty"
         "$mainMod SHIFT, Return, exec, kitty --title float_kitty_full"
+        "$mainMod CTRL, W, exec, hdrop kitty --title hdrop --class kitty_dropterm"
+        
         "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1] floorp'"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
@@ -222,6 +233,10 @@
 
       # windowrule
       windowrule = [
+        "float,^(kitty_dropterm)$"
+        "center,^(kitty_dropterm)$"
+        "size 1750 1200,^(kitty_dropterm)$"
+
         "float,imv"
         "center,imv"
         "size 1200 725,imv"
@@ -240,7 +255,6 @@
         "pin,wofi"
         "float,wofi"
         "noborder,wofi"
-        "tile, neovide"
         "idleinhibit focus,mpv"
         "float,udiskie"
         "float,title:^(Transmission)$"
@@ -249,6 +263,7 @@
         "move 0 0,title:^(Firefox — Sharing Indicator)$"
         "size 700 450,title:^(Volume Control)$"
         "move 40 55%,title:^(Volume Control)$"
+        "animation fadeSwitch,class:^(kitty_dropterm)$"
       ];
 
       # windowrulev2

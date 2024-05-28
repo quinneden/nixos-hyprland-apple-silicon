@@ -26,8 +26,8 @@
     asahi-btsync
     asahi-nvram
     btrfs-progs
-    git
     gparted
+    git
     wget
   ];
 
