@@ -21,11 +21,11 @@
   # Containers via systemd
   virtualisation.oci-containers = {
     backend = "podman";
-    containerOptions.login = {
-      username = "qeden";
-      password = /home/quinn/.quay_login;
-      registry = "https://quay.io";
-    }
+    # containers.login = {
+    #   username = "qeden";
+    #   passwordFile = /home/quinn/.quay_passwd;
+    #   registry = "https://quay.io";
+    # };
 
     containers = {
       centos-bootc = {
@@ -35,8 +35,4 @@
       };
     };
   };
-
-  home.file.".quay_login".text = ''
-  Qboyy$1215
-  '';
 }

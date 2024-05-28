@@ -9,6 +9,7 @@
     ++ [(import ./kitty.nix)]                     # terminal
     ++ [(import ./mako.nix)]                      # notification deamon
     ++ [(import ./micro.nix)]                     # nano replacement
+    ++ [(import ./misc.nix)]
     ++ [(import ./nvim.nix)]                      # neovim editor
     ++ [(import ./packages.nix)]                  # other packages
     ++ [(import ./scripts/scripts.nix)]           # personal scripts
