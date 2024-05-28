@@ -1,13 +1,8 @@
 { pkgs, username, ... }: 
 {
   services.xserver = {
-    enable = true;
+    enable = false;
     xkb.layout = "us";
-  };
-
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "${username}";
   };
 
   services.libinput = {

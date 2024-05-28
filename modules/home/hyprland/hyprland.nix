@@ -8,7 +8,6 @@
     grim
     slurp
     wl-clip-persist
-    wf-recorder
     glib
     wayland
     wayland-utils
@@ -18,6 +17,9 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemd.enable = true;
+    systemd = {
+      enable = true;
+      variables = [ "--all" ];
+    };
   };
 }

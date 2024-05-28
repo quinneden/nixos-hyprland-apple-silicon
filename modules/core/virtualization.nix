@@ -1,40 +1,42 @@
-{ config, pkgs, username, ... }:
-{
-  # Add user to libvirtd group
-  users.users.${username}.extraGroups = [ "libvirtd" ];
-
-  # Install necessary packages
-  environment.systemPackages = with pkgs; [
-    virt-manager
-    virt-viewer
-    spice spice-gtk
-    spice-protocol
-    # win-virtio
-    # win-spice
-    gnome.adwaita-icon-theme
-  ];
-
-  # Manage the virtualisation services
+{ pkgs, ... }: {
+  # Enable common container config files in /etc/containers
   virtualisation = {
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
-      };
-    };
-    qemu = {
-      package = pkgs.qemu_kvm;
-    };
-    spiceUSBRedirection.enable = true;
-
+    containers.enable = true;
     podman = {
       enable = true;
-      dockerSocket.enable = true;
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
     };
   };
-  # services.spice-vdagentd.enable = true;
-  services.qemuGuest.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    dive # look into docker image layers
+    podman-tui # status of containers in the terminal
+    # docker-compose # start group of containers for dev
+    podman-compose # start group of containers for dev
+  ];
+
+  # Containers via systemd
+  virtualisation.oci-containers = {
+    backend = "podman";
+    containerOptions.login = {
+      username = "qeden";
+      password = /home/quinn/.quay_login;
+      registry = "https://quay.io";
+    }
+
+    containers = {
+      centos-bootc = {
+        image = "quay.io/centos-bootc/centos-bootc";
+        autoStart = true;
+        ports = [ "127.0.0.1:2222:2222" ];
+      };
+    };
+  };
+
+  home.file.".quay_login".text = ''
+  Qboyy$1215
+  '';
 }

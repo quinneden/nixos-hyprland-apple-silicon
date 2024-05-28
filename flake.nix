@@ -1,5 +1,5 @@
 {
-  description = "FrostPhoenix's nixos configuration";
+  description = "Qeden's NixOS System Flake";
 
   inputs = {
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
@@ -48,7 +48,6 @@
   
     nur = {
       url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -72,7 +71,7 @@
       main = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [ (import ./hosts/main) ];
-        specialArgs = { host="main"; inherit self inputs username ; };
+        specialArgs = { host="main"; inherit self inputs username; };
       };
     };
   };

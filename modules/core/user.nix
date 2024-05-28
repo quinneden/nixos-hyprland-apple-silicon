@@ -20,5 +20,5 @@
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "podman" ];
     shell = pkgs.zsh;
   };
-  nix.settings.allowed-users = [ "${username}" root ];
+  nix.settings.allowed-users = [ "${username}" "root" ];
 }

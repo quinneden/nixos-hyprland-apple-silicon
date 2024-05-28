@@ -1,52 +1,51 @@
 { inputs, pkgs, ... }: 
 {
   home.packages = (with pkgs; [
-    bitwise                           # cli tool for bit / hex manipulation
+    bitwise                           
+    bleachbit                         
+    cinnamon.nemo-with-extensions     
+    cmatrix
     ddcutil
-    eza                               # ls replacement
-    entr                              # perform action when file change
-    fd                                # find replacement
-    file                              # Show file information 
-    fzf                               # fuzzy finder
-    jq
-    just
+    entr                              
+    eza                               
+    fd                                
+    ffmpeg
+    file                              
+    fzf                               
+    gcc
+    gnome.zenity
+    gnumake
+    go
     hdrop
     hexdump
-    jdk17                             # java
+    imv                               
+    inputs.alejandra.defaultPackage.${system}
+    jdk17                             
+    jq
+    just
     lazygit
-    cinnamon.nemo-with-extensions     # file manager
-    nitch                             # system fetch util
-    nix-prefetch-github
-    ripgrep                           # grep replacement
-    todo                              # cli todo list
-    yazi                              # terminal file manager
-    gnome.zenity
-
-    # C / C++
-    gcc
-    gnumake
-
-    # Python
-    python3
-
-    bleachbit                         # cache cleaner
-    cmatrix
-    ffmpeg
-    imv                               # image viewer
     libnotify
-	  man-pages					      # extra man pages
-    mpv                               # video player
-    ncdu                              # disk space
+    libvirt
+	  man-pages					     
+    mpv                               
+    ncdu                              
+    nitch                             
+    nix-prefetch-github
     openssl
-    pamixer                           # pulseaudio command line mixer
-    pavucontrol                       # pulseaudio volume controle (GUI)
-    playerctl                         # controller for media players
+    pamixer                           
+    pavucontrol
+    playerctl
     poweralertd
-    qalculate-gtk                     # calculator
+    python3
+    qalculate-gtk
+    qemu_full
+    ripgrep                           
+    todo                              
     unzip
     wget
     xdg-utils
+    xorriso
     xxd
-    inputs.alejandra.defaultPackage.${system}
+    yazi 
   ]);
 }
