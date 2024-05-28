@@ -27,14 +27,18 @@
         follow_mouse = 1;
         mouse_refocus = false;
         sensitivity = 0.1;
-        workspace_swipe = true;
-        workspace_swipe_fingers = 3;
         touchpad = {
           natural_scroll = true;
           clickfinger_behavior = true;
           scroll_factor = 0.85;
           disable_while_typing = false;
         };
+      };
+
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_fingers = 4;
+        workspace_swipe_distance = 400;
       };
 
       general = {
@@ -47,16 +51,18 @@
         "col.inactive_border" = "0x00000000";
         border_part_of_window = false;
         no_border_on_floating = false;
+        allow_tearing = true;
       };
 
       misc = {
-        disable_autoreload = false;
+        disable_autoreload = true;
         disable_hyprland_logo = true;
         always_follow_on_dnd = true;
         layers_hog_keyboard_focus = true;
-        animate_manual_resizes = false;
+        animate_manual_resizes = true;
         enable_swallow = true;
         focus_on_activate = true;
+        new_window_takes_over_fullscreen = 2;
       };
 
       dwindle = {
@@ -135,32 +141,31 @@
         # show keybinds list
         "$mainMod, F1, exec, show-keybinds"
 
-        # keybindings
+        # Keybindings
         "$mainMod, Return, exec, kitty --title kitty_fullscreen"
         "ALT, Return, exec, kitty --title float_kitty"
         "$mainMod SHIFT, Return, exec, kitty --title float_kitty_full"
         "$mainMod CTRL, W, exec, hdrop kitty --title hdrop --class kitty_dropterm"
-        
+
         "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1] floorp'"
+
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, fullscreen, 1"
         "$mainMod, Space, togglefloating,"
+        "$mainMod, J, togglesplit,"
+        "$mainMod, P, pseudo,"
+
         "$mainMod, D, exec, pkill wofi || wofi --show drun"
-        # "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
+        "$mainMod, W, exec, pkill wofi || wallpaper-picker"
+        "$mainMod, C, exec, hyprctl dispatch exec '[workspace 3] codium'"
+        "$mainMod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped"
+        "$mainMod, E, exec, nemo"
+
   	    "$mainMod, Escape, exit"
         "$mainMod SHIFT, Escape, exec, shutdown-script"
-        "$mainMod, P, pseudo,"
-        "$mainMod, J, togglesplit,"
-        "$mainMod, E, exec, nemo"
-        "$mainMod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped"
-        "$mainMod, C, exec, hyprctl dispatch exec '[workspace 3] codium'"
-        "$mainMod, G, exec, $HOME/.local/bin/toggle_layout"
-        "$mainMod, W, exec, pkill wofi || wallpaper-picker"
-
-        # screenshot
-        # "$mainMod, Print, exec, grimblast --notify --cursor save area ~/Pictures/$(date +'%Y-%m-%d-At-%Ih%Mm%Ss').png"
-        # ",Print, exec, grimblast --notify --cursor  copy area"
+        
+        # "$mainMod, G, exec, $HOME/.local/bin/toggle_layout"
 
         # switch focus
         "$mainMod, left, movefocus, l"
@@ -215,8 +220,8 @@
         ",XF86AudioNext,exec, playerctl next"
         ",XF86AudioPrev,exec, playerctl previous"
         ",XF86AudioStop, exec, playerctl stop"
-        "$mainMod, mouse_down, workspace, e-1"
-        "$mainMod, mouse_up, workspace, e+1"
+        # "$mainMod, mouse_down, workspace, e-1"
+        # "$mainMod, mouse_up, workspace, e+1"
 
         # laptop brigthness
         # ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
@@ -233,17 +238,12 @@
 
       # windowrule
       windowrule = [
+        # Dropterm
         "float,^(kitty_dropterm)$"
         "center,^(kitty_dropterm)$"
         "size 1750 1200,^(kitty_dropterm)$"
-
-        "float,imv"
-        "center,imv"
-        "size 1200 725,imv"
-        "float,mpv"
-        "center,mpv"
-        "tile,Aseprite"
-        "size 1200 725,mpv"
+        "animation fadeSwitch,class:^(kitty_dropterm)$"
+        # Kitty
         "float,title:^(float_kitty)$"
         "center,title:^(float_kitty)$"
         "size 850 750,title:^(float_kitty)$"
@@ -251,19 +251,28 @@
         "float,title:^(float_kitty_full)$"
         "center,title:^(float_kitty_full)$"
         "size 1750 1200,title:^(float_kitty_full)$"
-        "float,audacious"
+        "size 2530 1395,title:^(kitty_fullscreen)$"
+        "center,title:^(kitty_fullscreen)$"
+        # imv & mpv
+        "float,imv"
+        "center,imv"
+        "size 1200 725,imv"
+        "float,mpv"
+        "center,mpv"
+        "size 1200 725,mpv"
+        "idleinhibit focus,mpv"
+        # Wofi
         "pin,wofi"
         "float,wofi"
         "noborder,wofi"
-        "idleinhibit focus,mpv"
-        "float,udiskie"
-        "float,title:^(Transmission)$"
-        "float,title:^(Volume Control)$"
+        # Firefox
         "float,title:^(Firefox — Sharing Indicator)$"
         "move 0 0,title:^(Firefox — Sharing Indicator)$"
+        # Misc
+        "float,title:^(Transmission)$"
+        "float,title:^(Volume Control)$"
         "size 700 450,title:^(Volume Control)$"
         "move 40 55%,title:^(Volume Control)$"
-        "animation fadeSwitch,class:^(kitty_dropterm)$"
       ];
 
       # windowrulev2

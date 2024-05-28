@@ -9,10 +9,9 @@
     virt-viewer
     spice spice-gtk
     spice-protocol
-    win-virtio
-    win-spice
+    # win-virtio
+    # win-spice
     gnome.adwaita-icon-theme
-	  podman
   ];
 
   # Manage the virtualisation services
@@ -20,12 +19,22 @@
     libvirtd = {
       enable = true;
       qemu = {
+        package = pkgs.qemu_kvm;
         swtpm.enable = true;
         ovmf.enable = true;
         ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
+    qemu = {
+      package = pkgs.qemu_kvm;
+    };
     spiceUSBRedirection.enable = true;
+
+    podman = {
+      enable = true;
+      dockerSocket.enable = true;
+    };
   };
-  services.spice-vdagentd.enable = true;
+  # services.spice-vdagentd.enable = true;
+  services.qemuGuest.enable = true;
 }

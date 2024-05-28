@@ -35,7 +35,6 @@
 
       # Nixos
       cdnix = "cd $FLAKE_DIR";
-      "cd nix" = "cd $FLAKE_DIR";
       scripts = "~/.config/lazarus/modules/home/scripts/scripts";
       codenix = "cd ~/.config/lazarus && codium ~/.config/lazarus";
       nix-switch = "sudo nixos-rebuild switch --flake ~/.config/lazarus#${host} --impure";
@@ -50,7 +49,6 @@
       gaa  = "git add --all";
       gs   = "git status";
       status = "git status";
-      gb   = "git branch";
       gpl  = "git pull";
       gplo = "git pull origin";
       gp = "git push";
@@ -62,10 +60,6 @@
       gchb = "git checkout -b";
       gcoe = "git config user.email";
       gcon = "git config user.name";
-
-      # python
-      piv = "python -m venv .venv";
-      psv = "source .venv/bin/activate";
     };
 
     # plugins = [

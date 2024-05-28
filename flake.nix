@@ -39,6 +39,7 @@
 
   	nixos-apple-silicon = {
   	  url = "github:tpwrules/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
   	};
 
     nixpkgs = {
@@ -47,10 +48,11 @@
   
     nur = {
       url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, self, ...} @ inputs:
+  outputs = { nixpkgs, nixos-apple-silicon, hyprland, self, ...} @ inputs:
   let
     # selfPkgs = import ./pkgs;
     username = "quinn";
@@ -67,15 +69,10 @@
     nixos-apple-silicon.overlays.apple-silicon-overlay
     ];
     nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
+      main = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ (import ./hosts/desktop) ];
-        specialArgs = { host="desktop"; inherit self inputs username ; };
-      };
-      laptop = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [ (import ./hosts/laptop) ];
-        specialArgs = { host="laptop"; inherit self inputs username ; };
+        modules = [ (import ./hosts/main) ];
+        specialArgs = { host="main"; inherit self inputs username ; };
       };
     };
   };
