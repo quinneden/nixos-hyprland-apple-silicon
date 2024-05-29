@@ -6,6 +6,7 @@
     cinnamon.nemo-with-extensions     
     cmatrix
     ddcutil
+    edk2
     entr                              
     eza                               
     fd                                
@@ -38,10 +39,11 @@
     poweralertd
     python3
     qalculate-gtk
-    qemu_full
+    qemu
     ripgrep                           
     todo                              
     unzip
+    vagrant
     wget
     xdg-utils
     xorriso

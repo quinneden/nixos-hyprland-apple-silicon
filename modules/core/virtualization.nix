@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, username, ... }: {
   # Enable common container config files in /etc/containers
   virtualisation = {
     containers.enable = true;
@@ -9,30 +9,52 @@
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
     };
-  };
 
-  environment.systemPackages = with pkgs; [
-    dive # look into docker image layers
-    podman-tui # status of containers in the terminal
-    # docker-compose # start group of containers for dev
-    podman-compose # start group of containers for dev
-  ];
-
-  # Containers via systemd
-  virtualisation.oci-containers = {
-    backend = "podman";
-    # containers.login = {
-    #   username = "qeden";
-    #   passwordFile = /home/quinn/.quay_passwd;
-    #   registry = "https://quay.io";
+    # Containers via systemd
+    # oci-containers = {
+    #   backend = "podman";
+    #   containers = {
+    #     centos-bootc = {
+    #       image = "quay.io/centos-bootc/centos-bootc:stream9";
+    #       autoStart = false;
+    #       # ports = [ "127.0.0.1:31022" ];
+    #     };
+    #   };
     # };
 
-    containers = {
-      centos-bootc = {
-        image = "quay.io/centos-bootc/centos-bootc";
-        autoStart = true;
-        ports = [ "127.0.0.1:2222:2222" ];
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        # swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
+
+  users.users.${username}.extraGroups = [ "qemu-libvirtd" "libvirtd" ];
+
+  environment.systemPackages = with pkgs; [
+    podman-tui
+    podman-compose
+    spice
+    spice-gtk
+    spice-protocol
+    virt-viewer
+    OVMF
+  ];
+  programs.virt-manager.enable = true;
+
+  home-manager.users.${username} = {
+    dconf.settings = {
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
       };
     };
   };
 }
+
+
