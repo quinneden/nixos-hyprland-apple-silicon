@@ -11,10 +11,10 @@
       arrterian.nix-env-selector
 
       # C/C++
-      ms-vscode.cpptools
+      # ms-vscode.cpptools
 
       # OCaml
-      ocamllabs.ocaml-platform
+      # ocamllabs.ocaml-platform
 
       # Color theme
       catppuccin.catppuccin-vsc

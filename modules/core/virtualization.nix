@@ -13,28 +13,21 @@
     # Containers via systemd
     # oci-containers = {
     #   backend = "podman";
-    #   containers = {
-    #     centos-bootc = {
-    #       image = "quay.io/centos-bootc/centos-bootc:stream9";
-    #       autoStart = false;
-    #       # ports = [ "127.0.0.1:31022" ];
-    #     };
-    #   };
     # };
 
     libvirtd = {
       enable = true;
       qemu = {
         package = pkgs.qemu_kvm;
-        # swtpm.enable = true;
+        swtpm.enable = true;
         ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd ];
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
     spiceUSBRedirection.enable = true;
   };
 
-  users.users.${username}.extraGroups = [ "qemu-libvirtd" "libvirtd" ];
+  users.users.${username}.extraGroups = [ "qemu-libvirtd" "libvirtd" "docker" ];
 
   environment.systemPackages = with pkgs; [
     podman-tui
@@ -43,7 +36,6 @@
     spice-gtk
     spice-protocol
     virt-viewer
-    OVMF
   ];
   programs.virt-manager.enable = true;
 

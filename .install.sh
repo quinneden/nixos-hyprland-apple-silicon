@@ -68,7 +68,7 @@ get_host() {
     echo
 
     if [[ $REPLY =~ ^[Dd]$ ]]; then
-        HOST='desktop'
+        HOST='main'
     elif [[ $REPLY =~ ^[Ll]$ ]]; then
         HOST='laptop'
     else
@@ -107,24 +107,24 @@ install() {
 #     echo -e "Copying ${MAGENTA}/etc/nixos/hardware-configuration.nix${NORMAL} to ${MAGENTA}./hosts/${HOST}/${NORMAL}\n"
 #     cp /etc/nixos/hardware-configuration.nix hosts/${HOST}/hardware-configuration.nix
 #     sleep 0.2
-# 
-#     # Last Confirmation
-#     echo -en "You are about to start the system build, do you want to process ? "
-#     confirm
-# 
-#     # Build the system (flakes + home manager)
-#     echo -e "\nBuilding the system...\n"
-#     sudo nixos-rebuild switch --flake .#${HOST} --impure
+ 
+     # Last Confirmation
+     echo -en "You are about to start the system build, do you want to process ? "
+     confirm
+ 
+     # Build the system (flakes + home manager)
+     echo -e "\nBuilding the system...\n"
+     sudo nixos-rebuild switch --flake .#${HOST} --impure
 }
 
 main() {
-    # init
+    init
 
-    # print_header
+    print_header
 
-    # get_username
-    # set_username
-    # get_host
+    get_username
+    set_username
+    get_host
 
     install
 }

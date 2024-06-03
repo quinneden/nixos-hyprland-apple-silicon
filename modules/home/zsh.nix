@@ -7,14 +7,15 @@
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "fzf" "eza" "zsh-navigation-tools" "nix-shell" ];
-      custom = "$HOME/.config/oh-my-zsh";
+      plugins = [ "fzf" "eza" "zsh-navigation-tools" ];
     };
     initExtraFirst = ''
       DISABLE_MAGIC_FUNCTIONS=true
       export "MICRO_TRUECOLOR=1"
       EZA_ICON_SPACING=2
       SCRIPTS="$HOME/.config/lazarus/modules/home/scripts/scripts"
+
+      for i in $HOME/.config/completions/*; source $i
     '';
     shellAliases = {
       c = "clear";
@@ -27,6 +28,7 @@
       dsize = "du -hs";
       findw = "grep -rl";
       surf = "sudo rm -rf";
+      fuck = "sudo rm -rf";
       rf = "rm -rf";
       l = "eza --icons  -a --group-directories-first";
       la = "eza -a1 --";
