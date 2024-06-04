@@ -14,6 +14,7 @@
       export "MICRO_TRUECOLOR=1"
       EZA_ICON_SPACING=2
       SCRIPTS="$HOME/.config/lazarus/modules/home/scripts/scripts"
+      TERM="xterm-256color"
 
       for i in $HOME/.config/completions/*; source $i
     '';

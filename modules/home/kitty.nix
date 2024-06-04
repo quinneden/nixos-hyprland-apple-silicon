@@ -26,7 +26,6 @@
       active_tab_font_style = "normal";
       inactive_tab_font_style = "normal";
       tab_bar_style = "fade";
-      # tab_powerline_style = "round";
       active_tab_foreground = "#1e1e2e";
       active_tab_background = "#cba6f7";
       inactive_tab_foreground = "#bac2de";
@@ -41,7 +40,6 @@
       "alt+4" = "goto_tab 4";
       "ctrl+shift+left" = "previous_tab";
       "ctrl+shift+right" = "next_tab";
-
       ## Scrolling
       "page_up" = "scroll_page_up";
       "page_down" = "scroll_page_down";

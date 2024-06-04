@@ -37,6 +37,9 @@
       "editor.fontLigatures" = true;
       "editor.minimap.enabled" = false;
       "workbench.startupEditor" = "none";
+      "terminal.integrated.cursorStyle" = "line";
+
+      "nixEnvSelector.suggestion" = false;
 
       "editor.formatOnSave" = true;
       "editor.formatOnType" = true;
