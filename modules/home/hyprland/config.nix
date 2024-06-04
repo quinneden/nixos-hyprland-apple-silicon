@@ -146,8 +146,9 @@
         "ALT, Return, exec, kitty --title float_kitty"
         "$mainMod SHIFT, Return, exec, kitty --title float_kitty_full"
         "$mainMod CTRL, W, exec, hdrop kitty --title hdrop --class kitty_dropterm"
-
-        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1] floorp'"
+        
+        "$mainMod, B, exec, floorp"
+        "$mainMod, C, exec, codium"
 
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
@@ -158,7 +159,6 @@
 
         "$mainMod, D, exec, pkill wofi || wofi --show drun"
         "$mainMod, W, exec, pkill wofi || wallpaper-picker"
-        "$mainMod, C, exec, hyprctl dispatch exec '[workspace 3] codium'"
         "$mainMod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped"
         "$mainMod, E, exec, nemo"
 
@@ -185,8 +185,8 @@
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
 
-        # same as above, but switch to the workspace
-        "$mainMod SHIFT, 1, movetoworkspacesilent, 1" # movetoworkspacesilent
+
+        "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
         "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
         "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
         "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
@@ -298,14 +298,16 @@
         "float,title:^(branchdialog)$"
         "float,title:^(Confirm to replace files)$"
         "float,title:^(File Operation Progress)$"
+        "workspace 3,fullscreen,class:^(VSCodium)$"
+        "workspace 1,fakefullscreen,class:^(floorp)$"
       ];
 
     };
 
-    extraConfig = "
+    extraConfig = ''
       xwayland {
         force_zero_scaling = true
       }
-    ";
+    '';
   };
 }

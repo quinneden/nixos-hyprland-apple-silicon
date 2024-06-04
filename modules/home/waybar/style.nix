@@ -6,13 +6,12 @@ let custom = {
     text_color = "#cdd6f4";
     secondary_accent= "89b4fa";
     tertiary_accent = "f5f5f5";
-    background = "11111B";
+    background = "11111D";
     opacity = "0.98";
 };
 in 
 {
   programs.waybar.style = ''
-
     * {
         border: none;
         border-radius: 0px;

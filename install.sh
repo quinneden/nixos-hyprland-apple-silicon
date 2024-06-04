@@ -29,23 +29,38 @@ confirm() {
     fi
 }
 
+# print_header() {
+#     echo -E "$CYAN
+#       _____              _   ____  _                      _        
+#      |  ___| __ ___  ___| |_|  _ \| |__   ___   ___ _ __ (_)_  __  
+#      | |_ | '__/ _ \/ __| __| |_) | '_ \ / _ \ / _ \ '_ \| \ \/ /  
+#      |  _|| | | (_) \__ \ |_|  __/| | | | (_) |  __/ | | | |>  <   
+#      |_|  |_|  \___/|___/\__|_|   |_| |_|\___/ \___|_| |_|_/_/\_\  
+#      _   _ _       ___        ___           _        _ _           
+#     | \ | (_)_  __/ _ \ ___  |_ _|_ __  ___| |_ __ _| | | ___ _ __ 
+#     |  \| | \ \/ / | | / __|  | || '_ \/ __| __/ _' | | |/ _ \ '__|
+#     | |\  | |>  <| |_| \__ \  | || | | \__ \ || (_| | | |  __/ |   
+#     |_| \_|_/_/\_\\___/|___/ |___|_| |_|___/\__\__,_|_|_|\___|_| 
+
+#       ! To make sure everything runs correctly DO NOT run as root ! $GREEN
+#                         -> '"./install.sh"' $NORMAL
+
+#     "
+# }
 print_header() {
-    echo -E "$CYAN
-      _____              _   ____  _                      _        
-     |  ___| __ ___  ___| |_|  _ \| |__   ___   ___ _ __ (_)_  __  
-     | |_ | '__/ _ \/ __| __| |_) | '_ \ / _ \ / _ \ '_ \| \ \/ /  
-     |  _|| | | (_) \__ \ |_|  __/| | | | (_) |  __/ | | | |>  <   
-     |_|  |_|  \___/|___/\__|_|   |_| |_|\___/ \___|_| |_|_/_/\_\  
-     _   _ _       ___        ___           _        _ _           
-    | \ | (_)_  __/ _ \ ___  |_ _|_ __  ___| |_ __ _| | | ___ _ __ 
-    |  \| | \ \/ / | | / __|  | || '_ \/ __| __/ _' | | |/ _ \ '__|
-    | |\  | |>  <| |_| \__ \  | || | | \__ \ || (_| | | |  __/ |   
-    |_| \_|_/_/\_\\___/|___/ |___|_| |_|___/\__\__,_|_|_|\___|_| 
-
-      ! To make sure everything runs correctly DO NOT run as root ! $GREEN
-                        -> '"./install.sh"' $NORMAL
-
-    "
+    echo -E $CYAN'''
+ __   __   __   __  __   ______   ______                                       
+/\ "-.\ \ /\ \ /\_\_\_\ /\  __ \ /\  ___\                                      
+\ \ \-.  \\ \ \\/_/\_\/_\ \ \/\ \\ \___  \                                     
+ \ \_\\"\_\\ \_\ /\_\/\_\\ \_____\\/\_____\                                    
+  \/_/ \/_/ \/_/ \/_/\/_/ \/_____/ \/_____/                                    
+ __   __   __   ______   ______  ______   __       __       ______   ______    
+/\ \ /\ "-.\ \ /\  ___\ /\__  _\/\  __ \ /\ \     /\ \     /\  ___\ /\  == \   
+\ \ \\ \ \-.  \\ \___  \\/_/\ \/\ \  __ \\ \ \____\ \ \____\ \  __\ \ \  __<   
+ \ \_\\ \_\\"\_\\/\_____\  \ \_\ \ \_\ \_\\ \_____\\ \_____\\ \_____\\ \_\ \_\ 
+  \/_/ \/_/ \/_/ \/_____/   \/_/  \/_/\/_/ \/_____/ \/_____/ \/_____/ \/_/ /_/ 
+                                                                               
+'''
 }
 
 get_username() {
@@ -84,23 +99,24 @@ install() {
     echo -e "\n${RED}START INSTALL PHASE${NORMAL}\n"
     sleep 0.2
 
-    # Create basic directories
-    echo -e "Creating folders:"
-    echo -e "    - ${MAGENTA}~/Music${NORMAL}"
-    echo -e "    - ${MAGENTA}~/Documents${NORMAL}"
-    echo -e "    - ${MAGENTA}~/Pictures/wallpapers/others${NORMAL}"
-    mkdir -p ~/Music
-    mkdir -p ~/Documents
-    mkdir -p ~/Pictures/wallpapers/others
-    sleep 0.2
-
-    # Copy the wallpapers
-    echo -e "Copying all ${MAGENTA}wallpapers${NORMAL}"
-    cp -r wallpapers/wallpaper.png ~/Pictures/wallpapers
-    cp -r wallpapers/otherWallpaper/catppuccin/* ~/Pictures/wallpapers/others/
-    cp -r wallpapers/otherWallpaper/nixos/* ~/Pictures/wallpapers/others/
-    cp -r wallpapers/otherWallpaper/others/* ~/Pictures/wallpapers/others/
-    sleep 0.2
+    if [[ ! -d $HOME/Documents && ! -d $HOME/Music && ! -d $HOME/Pictures/wallpapers ]]; then
+        # Create basic directories
+        echo -e "Creating folders:"
+        echo -e "    - ${MAGENTA}~/Music${NORMAL}"
+        echo -e "    - ${MAGENTA}~/Documents${NORMAL}"
+        echo -e "    - ${MAGENTA}~/Pictures/wallpapers/others${NORMAL}"
+        mkdir -p ~/Music
+        mkdir -p ~/Documents
+        mkdir -p ~/Pictures/wallpapers/others
+        sleep 0.2
+        # Copy the wallpapers
+        echo -e "Copying all ${MAGENTA}wallpapers${NORMAL}"
+        cp -r wallpapers/wallpaper.png ~/Pictures/wallpapers
+        cp -r wallpapers/otherWallpaper/catppuccin/* ~/Pictures/wallpapers/others/
+        cp -r wallpapers/otherWallpaper/nixos/* ~/Pictures/wallpapers/others/
+        cp -r wallpapers/otherWallpaper/others/* ~/Pictures/wallpapers/others/
+        sleep 0.2
+    fi
 
     # Get the hardware configuration
     # echo -e "Copying ${MAGENTA}/etc/nixos/hardware-configuration.nix${NORMAL} to ${MAGENTA}./hosts/${HOST}/${NORMAL}\n"
@@ -108,9 +124,9 @@ install() {
     # sleep 0.2
 
     # Fill in partition UUID's in hardware.nix
-    if [[ -f /etc/nixos/hardware_configuration.nix ]]; then
-        ROOT_UUID=$(cat /etc/nixos/hardware-configuration.nix | tr -d '{};=' | grep -A1 'fileSystems."/"' | grep -o '"/dev/disk/by-uuid/.*"')
-        BOOT_UUID=$(cat /etc/nixos/hardware-configuration.nix | tr -d '{};=' | grep -A1 'fileSystems."/boot"' | grep -o '"/dev/disk/by-uuid/.*"')
+    if [[ -f /etc/nixos/hardware-configuration.nix ]]; then
+        ROOT_UUID=$(cat /etc/nixos/hardware-configuration.nix | tr -d '{};=' | grep -A1 'fileSystems."/"' | grep -o 'uuid/.*"' | sed s/'uuid\/'/''/g | tr -d '"')
+        BOOT_UUID=$(cat /etc/nixos/hardware-configuration.nix | tr -d '{};=' | grep -A1 'fileSystems."/boot"' | grep -o 'uuid/.*"' | sed s/'uuid\/'/''/g | tr -d '"')
         sed -i s/'ROOT_UUID'/"$ROOT_UUID"/g modules/core/hardware.nix
         sed -i s/'BOOT_UUID'/"$BOOT_UUID"/g modules/core/hardware.nix
     else
@@ -129,6 +145,7 @@ install() {
 
     # Build the system (flakes + home manager)
     echo -e "\nBuilding the system...\n"
+    sudo nix flake update .#${HOST}
     sudo nixos-rebuild switch --flake .#${HOST} --impure
 }
 
@@ -137,9 +154,9 @@ main() {
 
     print_header
 
-    get_username
-    set_username
-    get_host
+    # get_username
+    # set_username
+    # get_host
 
     install
 }

@@ -3,13 +3,13 @@
   programs.waybar.settings.mainBar = {
     position= "top";
     layer= "top";
-    height= 5;
+    height= 27;
     margin-top= 0;
     margin-bottom= 0;
     margin-left= 0;
     margin-right= 0;
     modules-left= [
-        "custom/launcher" 
+        "custom/launcher"
         "hyprland/workspaces"
     ];
     modules-center= [
@@ -21,14 +21,13 @@
         "memory"
         "disk"
         "pulseaudio" 
-        # "battery"
         "network"
     ];
     clock= {
         calendar = {
-          format = { today = "<span color='#b4befe'><b><u>{}</u></b></span>"; };
+            format = { today = "<span color='#b4befe'><b><u>{}</u></b></span>"; };
         };
-        format = " {:%I:%M}";
+        format = "  {:%I:%M}";
         tooltip= "true";
         tooltip-format= "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         format-alt= " {:%d/%m}";
@@ -53,8 +52,6 @@
             "1"= [];
             "2"= [];
             "3"= [];
-            "4"= [];
-            "5"= [];
         };
     };
     memory= {
@@ -106,7 +103,7 @@
         tooltip = true;
         tooltip-format = "{time}";
     };
-    "custom/launcher"= {
+    "custom/launcher" = {
         format= "";
         on-click= "pkill wofi || wofi --show drun";
         on-click-right= "pkill wofi || wallpaper-picker"; 
