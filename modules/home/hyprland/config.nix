@@ -2,7 +2,6 @@
 {
   wayland.windowManager.hyprland = {
     settings = {
-      
       # autostart
       exec-once = [
         "systemctl --user import-environment &"
@@ -25,7 +24,7 @@
         repeat_rate = 40;
         numlock_by_default = true;
         follow_mouse = 1;
-        mouse_refocus = false;
+        mouse_refocus = true;
         sensitivity = 0.1;
         touchpad = {
           natural_scroll = true;
@@ -55,11 +54,11 @@
       };
 
       misc = {
-        disable_autoreload = true;
+        # disable_autoreload = true;
         disable_hyprland_logo = true;
         always_follow_on_dnd = true;
         layers_hog_keyboard_focus = true;
-        animate_manual_resizes = true;
+        animate_manual_resizes = false;
         enable_swallow = true;
         focus_on_activate = true;
         new_window_takes_over_fullscreen = 2;
@@ -164,8 +163,6 @@
 
   	    "$mainMod, Escape, exit"
         "$mainMod SHIFT, Escape, exec, shutdown-script"
-        
-        # "$mainMod, G, exec, $HOME/.local/bin/toggle_layout"
 
         # switch focus
         "$mainMod, left, movefocus, l"
@@ -220,15 +217,8 @@
         ",XF86AudioNext,exec, playerctl next"
         ",XF86AudioPrev,exec, playerctl previous"
         ",XF86AudioStop, exec, playerctl stop"
-        # "$mainMod, mouse_down, workspace, e-1"
-        # "$mainMod, mouse_up, workspace, e+1"
-
-        # laptop brigthness
-        # ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-        # ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-        # "$mainMod, XF86MonBrightnessUp, exec, brightnessctl set 100%+"
-        # "$mainMod, XF86MonBrightnessDown, exec, brightnessctl set 100%-"
-      ];
+        "$mainMod, mouse_down, workspace, e-1"
+        "$mainMod, mouse_up, workspace, e+1"
 
       # mouse binding
       bindm = [

@@ -1,7 +1,6 @@
 {inputs, username, host, ...}: {
   imports =
-    [(import ./bat.nix)]                       # better cat command
-    ++ [(import ./cava.nix)]                      # audio visualizer
+       [(import ./bat.nix)]                       # better cat command
     ++ [(import ./floorp/floorp.nix)]             # firefox based browser
     ++ [(import ./git.nix)]                       # version control
     ++ [(import ./gtk.nix)]                       # gtk theme

@@ -1,5 +1,7 @@
 { inputs, pkgs, ... }:
 {
+  imports = with inputs; [ hyprland.nixosModules.default ];
+
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -21,7 +23,6 @@
     restart = true;
     settings = {
       default_session = {
-        # command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r --cmd Hyprland";
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
         user = "greeter";
       };

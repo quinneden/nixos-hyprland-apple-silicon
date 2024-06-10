@@ -26,7 +26,7 @@
 
     hyprland = {
       url =  "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     
     hypr-contrib = {
@@ -53,24 +53,21 @@
 
   outputs = { nixpkgs, nixos-apple-silicon, hyprland, self, ...} @ inputs:
   let
-    # selfPkgs = import ./pkgs;
     username = "quinn";
     system = "aarch64-linux";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      # overlays = with inputs; [ nixos-apple-silicon.overlays.apple-silicon-overlay ];
     };
     lib = nixpkgs.lib;
   in
   {
     # overlays.default = selfPkgs.overlay;
-    overlays = with inputs; [ 
-    nixos-apple-silicon.overlays.apple-silicon-overlay
-    ];
     nixosConfigurations = {
-      main = nixpkgs.lib.nixosSystem {
+      main = lib.nixosSystem {
         inherit system;
-        modules = [ (import ./hosts/main) ];
+        modules = [ (import ./modules/core.nix) ];
         specialArgs = { host="main"; inherit self inputs username; };
       };
     };

@@ -7,8 +7,10 @@
 
   hardware.bluetooth.enable = true;
 
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+  };
 
   hardware.asahi = {
   	peripheralFirmwareDirectory = ../../firmware;
@@ -19,18 +21,26 @@
 
   zramSwap.enable = true;
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = false;
+    };
+    initrd = {
+      availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
+      initrd.kernelModules = [ ];
+    };
+    kernelModules = [ ];
+    extraModulePackages = [ ];
+  };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/13453dcd-9d3f-4007-9787-e02ea9f0144d";
+    { device = "/dev/disk/by-uuid/ROOT_UUID";
       fsType = "btrfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8434-16F7";
+    { device = "/dev/disk/by-uuid/BOOT_UUID";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };

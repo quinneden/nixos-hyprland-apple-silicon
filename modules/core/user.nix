@@ -1,24 +1,23 @@
-{ pkgs, inputs, username, host, ...}:
+{ pkgs, inputs, host, config, ...}:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
-    useUserPackages = true;
     useGlobalPkgs = true;
-    extraSpecialArgs = { inherit inputs username host; };
-    users.${username} = {
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs host; };
+    users.quinn = {
       imports = [ ./../home ];
-      home.username = "${username}";
-      home.homeDirectory = "/home/${username}";
-      home.stateVersion = "24.11";
+      home.username = "quinn";
+      home.homeDirectory = "/home/quinn";
+      home.stateVersion = "24.05";
       programs.home-manager.enable = true;
     };
   };
 
-  users.users.${username} = {
+  users.users.quinn = {
     isNormalUser = true;
-    description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "podman" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
     shell = pkgs.zsh;
   };
-  nix.settings.allowed-users = [ "${username}" "root" ];
+  nix.settings.allowed-users = [ "quinn" ];
 }

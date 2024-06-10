@@ -3,7 +3,7 @@
   programs.waybar.settings.mainBar = {
     position= "top";
     layer= "top";
-    height= 27;
+    height= 5;
     margin-top= 0;
     margin-bottom= 0;
     margin-left= 0;

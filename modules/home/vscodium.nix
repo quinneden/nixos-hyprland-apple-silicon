@@ -10,12 +10,6 @@
       # nix-shell suport 
       arrterian.nix-env-selector
 
-      # C/C++
-      # ms-vscode.cpptools
-
-      # OCaml
-      # ocamllabs.ocaml-platform
-
       # Color theme
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons

@@ -1,6 +1,5 @@
 { ... }: 
 {
-  # security.pam.services.swaylock = { };
   security.polkit.enable = true;
   security.rtkit.enable = true;
   security.sudo.enable = true;

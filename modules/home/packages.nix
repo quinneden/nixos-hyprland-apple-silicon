@@ -27,6 +27,7 @@
     lazygit
     libnotify
     libvirt
+    lima
 	  man-pages					     
     mpv                               
     ncdu                              
