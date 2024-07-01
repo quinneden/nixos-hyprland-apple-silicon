@@ -2,7 +2,7 @@
 {  
   imports = with inputs; [
   	nixos-apple-silicon.nixosModules.apple-silicon-support
-    (modulesPath + "/installer/scan/not-detected.nix")
+    ../../hosts/main/hardware.nix
   ];
 
   hardware.bluetooth.enable = true;
@@ -26,28 +26,6 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = false;
     };
-    initrd = {
-      availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
-      initrd.kernelModules = [ ];
-    };
-    kernelModules = [ ];
-    extraModulePackages = [ ];
-  };
-
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ROOT_UUID";
-      fsType = "btrfs";
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/BOOT_UUID";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-  swapDevices = [ ];
-
-  networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }
